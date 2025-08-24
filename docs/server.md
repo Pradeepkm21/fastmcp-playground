@@ -1,4 +1,4 @@
 # Screenshot of successful tool calls
 
-![alt text](image.png)
+![alt text](server_output.png)
 

@@ -1,6 +1,6 @@
 """Quick test to verify tools work correctly."""
 
-from app import _ping, _whoami, _time_now 
+from app import _ping, _whoami, _time_now, _health_check
 import json
 
 def test_tools():
@@ -26,6 +26,12 @@ def test_tools():
     print("\n4. Testing time_now() with UTC:")
     result = _time_now("UTC")
     print(json.dumps(result, indent=2))
+    
+    # Test health_check
+    print("\n5. Testing health_check():")
+    result = _health_check()
+    print(json.dumps(result, indent=2))
+
     
     print("\n All tools working!")
 

@@ -1,32 +1,21 @@
 """FastMCP server with basic tools."""
 
-import logging
-import os
-import platform
-import socket
-import time
+import os, platform, socket, subprocess, time
 from datetime import datetime, timezone, timedelta 
 from typing import Dict, Any
-
 from fastmcp import FastMCP
 from pydantic import BaseModel, field_validator
 
 from app.config import settings
-
-
-# Setup logging
-logging.basicConfig(
-    level=getattr(logging, settings.log_level),
-    format='%(asctime)s - %(name)s - %(levelname)s - %(message)s'
-)
-logger = logging.getLogger(__name__)
+from app.logger import logger
 
 # Create MCP server
 mcp = FastMCP(name=settings.server_name)
 
 # Track server start time  
-START_TIME = time.time()
+SERVER_START_TIME = time.time()
 
+logger.info("MCP server initialized", extra={"tool_name": "system"})
 
 # Input validation for time_now tool
 class TimeRequest(BaseModel):
@@ -55,17 +44,25 @@ class TimeRequest(BaseModel):
 # Pure functions (not wrapped by FastMCP)
 def _ping():
     """Internal ping function."""
-    logger.info("Ping tool called")
-    return {
+    START_TIME = time.time()
+    logger.info("Ping tool called", extra={"tool_name": "ping"})
+    
+    result = {
         "message": "pong",
         "timestamp": datetime.now(timezone.utc).isoformat(),
         "status": "success"
     }
 
+    execution_time = (time.time() - START_TIME) * 1000  # Convert to ms
+    logger.info("Ping completed successfully", extra={"tool_name": "ping", "execution_time": execution_time})
+    
+    return result
+
 
 def _whoami():
     """Internal whoami function."""
-    logger.info("Whoami tool called")
+    logger.info("Whoami tool called", extra={"tool_name": "whoami"})
+
     try:
         result = {
             "hostname": socket.gethostname(),
@@ -77,10 +74,12 @@ def _whoami():
             "status": "success"
         }
 
+        logger.info("Whoami completed successfully", extra={"tool_name": "whoami"})
+
         return result
     
     except Exception as e:
-        logger.error(f"Whoami failed: {e}")
+        logger.error(f"Whoami failed: {e}", extra={"tool_name": "whoami"})
         return {
             "error": str(e),
             "status": "failed"
@@ -89,7 +88,8 @@ def _whoami():
 
 def _time_now(tz: str) -> Dict[str, Any]:
     """Internal time_now function with pure logic."""
-    logger.info(f"Time_now called for timezone: {tz}")
+    START_TIME = time.time()
+    logger.info("Health check requested", extra={"tool_name": "health_check"})
     
     try:
         # Timezone offset mapping (hours from UTC)
@@ -119,20 +119,64 @@ def _time_now(tz: str) -> Dict[str, Any]:
             "status": "success"
         }
         
-        logger.info(f"Time calculated successfully for {tz}")
+        execution_time = (time.time() - START_TIME) * 1000
+        logger.info("Health check completed successfully", 
+                    extra={"tool_name": "health_check", "execution_time": execution_time})
+        
         return result
         
     except Exception as e:
-        error_msg = f"Failed to calculate time for {tz}: {str(e)}"
-        logger.error(error_msg)
-        
-        # Consistent error message shape
+        logger.error(f"Health check failed: {e}", extra={"tool_name": "health_check"})
         return {
-            "error": error_msg,
-            "status": "failed",
+            "error": str(e),
+            "status": "unhealthy",
             "timezone": tz
         }
 
+
+def _health_check() -> Dict[str, Any]:
+    """Internal health_check function with pure logic."""
+    START_TIME = time.time()
+    logger.info("Health check requested", extra={"tool_name": "health_check"})
+    
+    try:
+        # Calculate uptime
+        uptime_seconds = time.time() - SERVER_START_TIME
+        
+        # Get git SHA (simplified)
+        git_sha = "unknown"
+        try:
+            git_sha = subprocess.check_output(
+                ['git', 'rev-parse', '--short', 'HEAD'],
+                stderr=subprocess.DEVNULL,
+                text=True
+            ).strip()
+        except:
+            pass  # Git not available
+
+        result = {
+            "status": "healthy",
+            "version": "0.1.0",
+            "git_sha": git_sha,
+            "uptime_seconds": round(uptime_seconds, 2),
+            "uptime_formatted": f"{uptime_seconds:.1f} seconds" if uptime_seconds < 60 else f"{uptime_seconds/60:.1f} minutes",
+            "timestamp": datetime.now(timezone.utc).isoformat()
+        }
+
+        execution_time = (time.time() - START_TIME) * 1000
+        logger.info("Health check completed successfully", 
+                    extra={"tool_name": "health_check", "execution_time": execution_time})
+        
+        return result
+    
+    except Exception as e:
+        logger.error(f"Health check failed: {e}", extra={"tool_name": "health_check"})
+        return {
+            "status": "unhealthy",
+            "error": str(e),
+            "timestamp": datetime.now(timezone.utc).isoformat()
+        }
+    
 
 # MCP tools (wrapped versions)
 @mcp.tool()
@@ -157,11 +201,16 @@ def time_now(request: TimeRequest) -> Dict[str, Any]:
     """
     return _time_now(request.tz)
 
+@mcp.tool()
+def health_check() :
+    """Returns version, git SHA, and uptime."""
+    return _health_check()
+
 
 def main():
     """Start the MCP server."""
     logger.info(f"Starting {settings.server_name}")
-    logger.info("Tools registered: ping, whoami, time_now") 
+    logger.info("Tools registered: ping, whoami, time_now, health_check") 
     
     try:
         mcp.run()

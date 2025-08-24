@@ -1,0 +1,11 @@
+timestamp=2025-08-24 17:13:50.121Z level=INFO component=mcp_server function=<module> tool=system message=MCP server initialized
+timestamp=2025-08-24 17:13:50.124Z level=INFO component=mcp_server function=_ping tool=ping message=Ping tool called
+timestamp=2025-08-24 17:13:50.125Z level=INFO component=mcp_server function=_ping tool=ping message=Ping completed successfully execution_time_ms=0.00
+timestamp=2025-08-24 17:13:50.125Z level=INFO component=mcp_server function=_whoami tool=whoami message=Whoami tool called
+timestamp=2025-08-24 17:13:50.327Z level=INFO component=mcp_server function=_whoami tool=whoami message=Whoami completed successfully
+timestamp=2025-08-24 17:13:50.328Z level=INFO component=mcp_server function=_time_now tool=health_check message=Health check requested
+timestamp=2025-08-24 17:13:50.328Z level=INFO component=mcp_server function=_time_now tool=health_check message=Health check completed successfully execution_time_ms=0.99
+timestamp=2025-08-24 17:13:50.329Z level=INFO component=mcp_server function=_time_now tool=health_check message=Health check requested
+timestamp=2025-08-24 17:13:50.329Z level=INFO component=mcp_server function=_time_now tool=health_check message=Health check completed successfully execution_time_ms=0.00
+timestamp=2025-08-24 17:13:50.330Z level=INFO component=mcp_server function=_health_check tool=health_check message=Health check requested
+timestamp=2025-08-24 17:13:50.372Z level=INFO component=mcp_server function=_health_check tool=health_check message=Health check completed successfully execution_time_ms=41.87

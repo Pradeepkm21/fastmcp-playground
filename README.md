@@ -63,39 +63,4 @@ The project follows a step-by-step learning plan (Phases 0 and 1) to understand 
 
 ---
 
-## 📂 Repo Structure (planned)
-
-fastmcp-playground/
-│── docs/
-│ ├── overview.md
-│ ├── tooling.md
-│ ├── env.md
-│ ├── logs.txt
-│ ├── demo.md
-│ ├── health.md
-│ └── server.md
-│
-│── app/ 
-│ ├── __init__.py
-│ ├── __main__.py
-│ ├── config.py
-│ └── logger.py
-|
-│── tests/
-│ └── test_tools.py
-|
-│── pyproject.toml
-│── uv.lock
-│── .env.example
-│── .gitignore
-│── README.md
-│── test_my_tools.py
-|
-│── images/
-│ ├── ping.png
-│ ├── whoami.png
-│ ├── time_now.png
-│ ├── health.png
-
-
 

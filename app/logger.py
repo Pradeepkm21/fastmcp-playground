@@ -1,4 +1,3 @@
-# Setup logging
 import logging
 from datetime import datetime, timezone
 from app.config import settings
@@ -38,7 +37,7 @@ console_handler = logging.StreamHandler()
 console_handler.setFormatter(formatter)
 
 # File handler (writes to docs/logs.txt)
-file_handler = logging.FileHandler('docs/logs.txt', mode='w')  # 'w' overwrites each time
+file_handler = logging.FileHandler('docs/logs.txt', mode='a')  # 'a' append each time
 file_handler.setFormatter(formatter)
 
 # Add both handlers

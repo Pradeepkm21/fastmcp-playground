@@ -1,4 +1,4 @@
 # Screenshot of successful tool calls
 
-![alt text](server_output.png)
+![server start successfully](../images/server_output.png)
 

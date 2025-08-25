@@ -44,7 +44,7 @@ class TimeRequest(BaseModel):
 # Pure functions (not wrapped by FastMCP)
 def _ping():
     """Internal ping function."""
-    START_TIME = time.time()
+    start_time = time.time()
     logger.info("Ping tool called", extra={"tool_name": "ping"})
     
     result = {
@@ -53,7 +53,7 @@ def _ping():
         "status": "success"
     }
 
-    execution_time = (time.time() - START_TIME) * 1000  # Convert to ms
+    execution_time = (time.time() - start_time) * 1000  # Convert to ms
     logger.info("Ping completed successfully", extra={"tool_name": "ping", "execution_time": execution_time})
     
     return result
@@ -88,8 +88,8 @@ def _whoami():
 
 def _time_now(tz: str) -> Dict[str, Any]:
     """Internal time_now function with pure logic."""
-    START_TIME = time.time()
-    logger.info("Health check requested", extra={"tool_name": "health_check"})
+    start_time = time.time()
+    logger.info("time_now requested", extra={"tool_name": "time_now"})
     
     try:
         # Timezone offset mapping (hours from UTC)
@@ -119,24 +119,24 @@ def _time_now(tz: str) -> Dict[str, Any]:
             "status": "success"
         }
         
-        execution_time = (time.time() - START_TIME) * 1000
-        logger.info("Health check completed successfully", 
-                    extra={"tool_name": "health_check", "execution_time": execution_time})
+        execution_time = (time.time() - start_time) * 1000
+        logger.info("Time_Now completed successfully", 
+                    extra={"tool_name": "time_now", "execution_time": execution_time})
         
         return result
         
     except Exception as e:
-        logger.error(f"Health check failed: {e}", extra={"tool_name": "health_check"})
+        logger.error(f"Time_Now failed: {e}", extra={"tool_name": "time_now"})
         return {
             "error": str(e),
-            "status": "unhealthy",
+            "status": "failed",
             "timezone": tz
         }
 
 
 def _health_check() -> Dict[str, Any]:
     """Internal health_check function with pure logic."""
-    START_TIME = time.time()
+    start_time = time.time()
     logger.info("Health check requested", extra={"tool_name": "health_check"})
     
     try:
@@ -160,10 +160,10 @@ def _health_check() -> Dict[str, Any]:
             "git_sha": git_sha,
             "uptime_seconds": round(uptime_seconds, 2),
             "uptime_formatted": f"{uptime_seconds:.1f} seconds" if uptime_seconds < 60 else f"{uptime_seconds/60:.1f} minutes",
-            "timestamp": datetime.now(timezone.utc).isoformat()
+            "timestamp": datetime.now(timezone.utc).isoformat(),
         }
 
-        execution_time = (time.time() - START_TIME) * 1000
+        execution_time = (time.time() - start_time) * 1000
         logger.info("Health check completed successfully", 
                     extra={"tool_name": "health_check", "execution_time": execution_time})
         

@@ -1,5 +1,3 @@
-"""Quick test to verify tools work correctly."""
-
 from app import _ping, _whoami, _time_now, _health_check
 import json
 

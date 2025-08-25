@@ -1,3 +1,3 @@
 # Health output screenshot
 
-![alt text](health_output.png)
+![Health output](../images/health_output.png)

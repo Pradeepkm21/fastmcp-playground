@@ -71,15 +71,31 @@ fastmcp-playground/
 │ ├── tooling.md
 │ ├── env.md
 │ ├── logs.txt
-│ └── demo.md
+│ ├── demo.md
+│ ├── health.md
+│ └── server.md
 │
-│── app/ # MCP server code
-│── tests/ # Unit tests
+│── app/ 
+│ ├── __init__.py
+│ ├── __main__.py
+│ ├── config.py
+│ └── logger.py
+|
+│── tests/
+│ └── test_tools.py
+|
 │── pyproject.toml
 │── uv.lock
 │── .env.example
 │── .gitignore
 │── README.md
+│── test_my_tools.py
+|
+│── images/
+│ ├── ping.png
+│ ├── whoami.png
+│ ├── time_now.png
+│ ├── health.png
 
 
 

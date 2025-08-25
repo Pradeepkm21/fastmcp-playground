@@ -1,11 +1,33 @@
-timestamp=2025-08-24 17:13:50.121Z level=INFO component=mcp_server function=<module> tool=system message=MCP server initialized
-timestamp=2025-08-24 17:13:50.124Z level=INFO component=mcp_server function=_ping tool=ping message=Ping tool called
-timestamp=2025-08-24 17:13:50.125Z level=INFO component=mcp_server function=_ping tool=ping message=Ping completed successfully execution_time_ms=0.00
-timestamp=2025-08-24 17:13:50.125Z level=INFO component=mcp_server function=_whoami tool=whoami message=Whoami tool called
-timestamp=2025-08-24 17:13:50.327Z level=INFO component=mcp_server function=_whoami tool=whoami message=Whoami completed successfully
-timestamp=2025-08-24 17:13:50.328Z level=INFO component=mcp_server function=_time_now tool=health_check message=Health check requested
-timestamp=2025-08-24 17:13:50.328Z level=INFO component=mcp_server function=_time_now tool=health_check message=Health check completed successfully execution_time_ms=0.99
-timestamp=2025-08-24 17:13:50.329Z level=INFO component=mcp_server function=_time_now tool=health_check message=Health check requested
-timestamp=2025-08-24 17:13:50.329Z level=INFO component=mcp_server function=_time_now tool=health_check message=Health check completed successfully execution_time_ms=0.00
-timestamp=2025-08-24 17:13:50.330Z level=INFO component=mcp_server function=_health_check tool=health_check message=Health check requested
-timestamp=2025-08-24 17:13:50.372Z level=INFO component=mcp_server function=_health_check tool=health_check message=Health check completed successfully execution_time_ms=41.87
+timestamp=2025-08-25 07:47:42.810Z level=INFO component=mcp_server function=<module> tool=system message=MCP server initialized
+timestamp=2025-08-25 07:47:42.814Z level=INFO component=mcp_server function=main message=Starting FastMCP Playground
+timestamp=2025-08-25 07:47:42.814Z level=INFO component=mcp_server function=main message=Tools registered: ping, whoami, time_now, health_check
+timestamp=2025-08-25 07:47:48.285Z level=INFO component=mcp_server function=main message=Server stopped by user
+timestamp=2025-08-25 07:48:08.039Z level=INFO component=mcp_server function=<module> tool=system message=MCP server initialized
+timestamp=2025-08-25 07:48:08.054Z level=INFO component=mcp_server function=_ping tool=ping message=Ping tool called
+timestamp=2025-08-25 07:48:08.054Z level=INFO component=mcp_server function=_ping tool=ping message=Ping completed successfully execution_time_ms=0.00
+timestamp=2025-08-25 07:48:08.054Z level=INFO component=mcp_server function=_whoami tool=whoami message=Whoami tool called
+timestamp=2025-08-25 07:48:08.119Z level=INFO component=mcp_server function=_whoami tool=whoami message=Whoami completed successfully
+timestamp=2025-08-25 07:48:08.120Z level=INFO component=mcp_server function=_time_now tool=time_now message=time_now requested
+timestamp=2025-08-25 07:48:08.121Z level=INFO component=mcp_server function=_time_now tool=time_now message=Time_Now completed successfully execution_time_ms=1.00
+timestamp=2025-08-25 07:48:08.121Z level=INFO component=mcp_server function=_time_now tool=time_now message=time_now requested
+timestamp=2025-08-25 07:48:08.121Z level=INFO component=mcp_server function=_time_now tool=time_now message=Time_Now completed successfully execution_time_ms=0.00
+timestamp=2025-08-25 07:48:08.121Z level=INFO component=mcp_server function=_health_check tool=health_check message=Health check requested
+timestamp=2025-08-25 07:48:08.149Z level=INFO component=mcp_server function=_health_check tool=health_check message=Health check completed successfully execution_time_ms=28.00
+timestamp=2025-08-25 07:48:08.150Z level=INFO component=mcp_server function=_ping tool=ping message=Ping tool called
+timestamp=2025-08-25 07:48:08.150Z level=INFO component=mcp_server function=_ping tool=ping message=Ping completed successfully execution_time_ms=0.00
+timestamp=2025-08-25 07:48:08.151Z level=INFO component=mcp_server function=_ping tool=ping message=Ping tool called
+timestamp=2025-08-25 07:48:08.151Z level=INFO component=mcp_server function=_ping tool=ping message=Ping completed successfully execution_time_ms=0.00
+timestamp=2025-08-25 07:48:08.152Z level=INFO component=mcp_server function=_ping tool=ping message=Ping tool called
+timestamp=2025-08-25 07:48:08.152Z level=INFO component=mcp_server function=_ping tool=ping message=Ping completed successfully execution_time_ms=0.00
+timestamp=2025-08-25 07:48:08.153Z level=INFO component=mcp_server function=_whoami tool=whoami message=Whoami tool called
+timestamp=2025-08-25 07:48:08.153Z level=INFO component=mcp_server function=_whoami tool=whoami message=Whoami completed successfully
+timestamp=2025-08-25 07:48:08.154Z level=INFO component=mcp_server function=_whoami tool=whoami message=Whoami tool called
+timestamp=2025-08-25 07:48:08.154Z level=INFO component=mcp_server function=_whoami tool=whoami message=Whoami completed successfully
+timestamp=2025-08-25 07:48:08.155Z level=INFO component=mcp_server function=_time_now tool=time_now message=time_now requested
+timestamp=2025-08-25 07:48:08.155Z level=INFO component=mcp_server function=_time_now tool=time_now message=Time_Now completed successfully execution_time_ms=1.00
+timestamp=2025-08-25 07:48:08.155Z level=INFO component=mcp_server function=_time_now tool=time_now message=time_now requested
+timestamp=2025-08-25 07:48:08.155Z level=ERROR component=mcp_server function=_time_now tool=time_now message=Time_Now failed: 'INVALID'
+timestamp=2025-08-25 07:48:08.156Z level=INFO component=mcp_server function=_health_check tool=health_check message=Health check requested
+timestamp=2025-08-25 07:48:08.187Z level=INFO component=mcp_server function=_health_check tool=health_check message=Health check completed successfully execution_time_ms=31.04
+timestamp=2025-08-25 07:48:08.189Z level=INFO component=mcp_server function=_health_check tool=health_check message=Health check requested
+timestamp=2025-08-25 07:48:08.215Z level=INFO component=mcp_server function=_health_check tool=health_check message=Health check completed successfully execution_time_ms=27.23

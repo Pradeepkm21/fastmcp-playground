@@ -4,3 +4,4 @@ __pycache__/
 *.pyc
 .pytest_cache
 .vscode/mcp.json
+.ruff_cache
